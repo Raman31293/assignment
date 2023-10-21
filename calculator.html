@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BASIC CALCULATOR</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 50vh;
+            width: 100%;
+            border: 2Px solid black;
+            justify-content: center;
+            background-color: blue;
+        } 
+        .ro{
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            flex : auto;                    
+            
+        }       
+        .input{
+            font-size: 8 px;
+        }
+        .button{
+            margin: 0 2px ;
+            font-size: 18px;
+            padding: 10 px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>!BASIC CALCULATOR!</h1>
+        <!-- display input -->
+        <div class="display">
+            <input class="input" type="text">
+        </div>
+        <!-- first row -->
+        <div class="ro">
+            <!-- for AC we give blanck space to clear all -->
+            <button class="button">AC</button>
+            <!-- to delete one value at one time we convert our display into string and apply string method -->
+            <button class="button">DE</button>
+            <button class="button">.</button>
+            <button class="button">/</button>
+        </div>        
+        <!-- second row -->
+        <div class="ro">
+            <!-- adding click feature -->
+            <!--  we use +='7' to add repeatability of click -->            
+            <button class="button">7</button>           
+            <button class="button">8</button>
+            <button class="button">9</button>
+            <button class="button">*</button>                                
+        </div>
+        <!-- third row -->
+        <div class="ro">
+            <button class="button">4</button>           
+            <button class="button">5</button>
+            <button class="button">6</button>
+            <button class="button">-</button>                               
+        </div>
+        <!-- fourth row -->
+        <div class="ro">
+            <button class="button">1</button>
+            <button class="button">2</button>
+            <button class="button">3</button>
+            <button class="button">+</button>                    
+        </div>
+        <!-- fifth row -->
+        <div class="ro">
+            <button class="button">00</button>           
+            <button class="button">0</button>
+            <button class="button">=</button>          
+            
+        </div>
+    </div>
+    <script>
+        // define an empty value for by default empty screen
+        let val = "";
+        // to taking element by class 
+        let buttons = document.querySelectorAll('.button');
+        // converting into array from buttons which is declare in above line
+        Array.from(buttons).forEach((button)=>{ 
+            // add event listner on each button and with condition like click
+            button.addEventListener('click',(v)=>{
+                if(v.target.innerHTML == '='){
+                    val = eval(val);
+                    // again geeting element by query selector of input only and changes its value to our val
+                    document.querySelector('input').value = val;
+                } 
+                else if(v.target.innerHTML == 'AC'){
+                    val = "";
+                    // again geeting element by query selector of input only and changes its value to our val
+                    document.querySelector('input').value = val;
+                }    
+                else if(v.target.innerHTML == 'DE'){
+                    // .slice(0,-1) will delete the only last element
+                    val = val.toString().slice(0,-1);
+                    // again geeting element by query selector of input only and changes its value to our val
+                    document.querySelector('input').value = val;
+                }  
+                else{
+                    val += v.target.innerHTML;
+                    // again geeting element by query selector of input only and changes its value to our val
+                    document.querySelector('input').value = val;
+                }         
+            })      
+                
+                
+            
+        })
+
+
+
+    </script>
+
+<!-- we use eval to evaluate our display value to perform task -->
+    
+</body>
+</html>

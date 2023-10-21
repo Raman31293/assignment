@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+    <style>
+        .container{
+            width: 100%;
+            min-height: 100vh;
+            background: antiquewhite;
+        }
+        .todo{
+           width:100%;
+           background: #fff;
+           margin: 100px auto 20px;
+           padding: 40px 30px;
+           border-radius: 10px;
+        }
+        .todo h2{
+            color: blue;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .ro{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;            
+        }
+        input{
+            flex: 1;
+            background: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="todo">
+            <h2>To-Do-List</h2>
+            <div class="ro">
+                <input type="text" id="input" placeholder="Add your task here">
+                <button onclick="add()">ADD</button>
+            </div>
+            <ul id="toDoList">
+                
+            </ul>
+        </div>
+    </div>
+    <script>
+        const box = document.getElementById('input');
+        const list = document.getElementById('toDoList');
+        function add(){
+            if(input.value === ''){
+                alert('task is empty add something to do');
+            }
+            else{
+                // creating list element 
+                let li = document.createElement('li');
+                li.innerHTML = box.value;
+                // adding a child element in to do list
+                toDoList.appendChild(li);
+            }
+            // after adding we have to empty our input
+            box.value='';
+        }
+    </script>
+</body>
+</html>
